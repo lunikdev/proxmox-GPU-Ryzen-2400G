@@ -199,3 +199,4 @@ root@gamorim:~# lspci -nn -v -s 03:00.0
 
 Caso apareça "Kernel driver in use: vfio-pci" significa que nossa GPU ja esá pronta para passagem, caso não funcione você pode tentar refazer o processo novamente.
 
+ 
