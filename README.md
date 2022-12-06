@@ -185,6 +185,7 @@ Com endereço em mãos eu digito o comando:
 Resultado:
 
 03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:7340] (rev c5) (prog-if 00 [VGA controller])
+
         Subsystem: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:0b0c]
         
         Flags: bus master, fast devsel, latency 0, IRQ 48, IOMMU group 10
@@ -206,6 +207,7 @@ Resultado:
         Capabilities: [64] Express Legacy Endpoint, MSI 00
         
         Capabilities: [a0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+        
         Capabilities: [100] Vendor Specific Information: ID=0001 Rev=1 Len=010 <?>
         
         Capabilities: [150] Advanced Error Reporting
