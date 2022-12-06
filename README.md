@@ -113,8 +113,11 @@ Use esse comando para puxar todos os ID relacionado a amd/ati
 Resultado:
 
 >01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c5)
+>
 >02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
+>
 >03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:7340] (rev c5)
+>
 >03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 HDMI Audio [1002:ab38]
 
 Use esse comando para puxar todos os ID relaciona a USB caso queira fazer a passagem da USB para a VM.
@@ -124,7 +127,9 @@ Use esse comando para puxar todos os ID relaciona a USB caso queira fazer a pass
 Resultado:
 
 >04:00.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Device [1022:43bc] (rev 02)
+>
 >09:00.3 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Raven USB 3.1 [1022:15e0]
+>
 >09:00.4 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Raven USB 3.1 [1022:15e1]
 
 Peguei todos os os ids e coloquem eles separados por virgula.
@@ -139,9 +144,8 @@ Ira ficar assim:
 
 Cole e execute o comando no terminal Shell.
 
-Cole e execute:
-
 >update-initramfs -u
+
 
 Cole e execute:
 
@@ -161,10 +165,13 @@ Com a maquina reiniciada digite no shell:
 
 Resultado:
 
-01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c5)
-02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
-03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:7340] (rev c5)
-03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 HDMI Audio [1002:ab38]
+>01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c5)
+>
+>02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
+>
+>03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:7340] (rev c5)
+>
+>03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 HDMI Audio [1002:ab38]
 
 O endereço da minha GPU e 03:00.0.
 
