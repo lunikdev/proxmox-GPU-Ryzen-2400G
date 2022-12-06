@@ -28,7 +28,7 @@ Para começarmos o seu hardware deve ter suporte a: VT-d, interrupt mapping, and
 
 **Configuração bios:**
 
-As configurações apresentadas a seguir obtevem exito atraves de tentativa erro, infelizmente configurações diferente causavam bugs diferente e as vezes a maquina nem chega a iniciar, travava o proxmox ou nem chegava a dar video.
+As configurações apresentadas a seguir obtiveram exito atraves de tentativa erro, infelizmente configurações diferente causavam bugs diferente e as vezes a maquina nem chega a iniciar, travava o proxmox ou nem chegava a dar video.
 
 
 ****
@@ -52,9 +52,9 @@ Vamos modificar ela para:
 
 >RUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction nofb nomodeset consoleblank=1 initcall_blacklist=sysfb_init"
 
-Esse foi o comando que funcionou para mim, tentei diversas variações que encontrei em foruns e pela internet porém o Proxmox acabava tendo acesso a placa e não permitindo a passagem da GPU para a VM, os comandos chave nessa linha que mais me ajudaram a corrigir o meu problema foram "initcall_blacklist=sysfb_init" (ele ajudou a bloquear o acesso do proxmox a placa e conseguir realizar o boot da maquina com o HDMI conectado)  e "consoleblank=1" (retiar as letras do consola na tela do HDMI que ficava piscando), antes desses comandos eu tinha que iniciar a VM sem nenhuma nenhum monitor conectado ao HDMI da GPU e depois da maquina iniciada eu poderia conectar o monitor.
+Esse foi o comando que funcionou para mim, tentei diversas variações que encontrei em foruns e pela internet porém o Proxmox acabava tendo acesso a placa e não permitindo a passagem da GPU para a VM, os comandos chave nessa linha que mais me ajudaram a corrigir o meu problema foram "initcall_blacklist=sysfb_init" (ele ajudou a bloquear o acesso do proxmox a placa e conseguir realizar o boot da maquina com o HDMI conectado)  e "consoleblank=1" (retirar as letras do console na tela do HDMI que ficava piscando), antes desses comandos eu tinha que iniciar a VM sem nenhuma nenhum monitor conectado ao HDMI da GPU e depois da maquina iniciada eu poderia conectar o monitor.
 
-Caso não tenha exito no final do tutorial eu deixou outras três variações do comando abaixo.
+Caso não tenha exito no final do tutorial eu deixou outras três variações do comando abaixo, não funcionaram para mim mas talvez funcione com você.
 
 >GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction nofb nomodeset consoleblank=1"
 
@@ -139,7 +139,7 @@ Peguei todos os os ids e coloquem eles separados por virgula.
 
 >1002:1478,1002:1479,1002:7340,1002:ab38,1022:43bc,1022:15e0,1022:15e1
 
-Agora una ele a esse comando echo "options vfio-pci ids=(CHANGE) disable_vga=1"> /etc/modprobe.d/vfio.conf
+Agora suas IDs a esse comando echo "options vfio-pci ids=(CHANGE) disable_vga=1"> /etc/modprobe.d/vfio.conf
 
 Ira ficar assim:
 
