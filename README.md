@@ -144,3 +144,58 @@ reset
 E por fim reinicie a maquina:
 
 reboot
+
+
+Passo 6: Verificar se o proxmox está reconhecendo a GPU.
+
+Vamos pegar o endereço fisico da GPU e em seguida vamos verificar se o proxmox ja esta reconhecendo o GPU
+Com a maquina reiniciada digite no shell:
+
+lspci -nn | grep -i amd/ati
+
+Resultado:
+
+01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c5)
+02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
+03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:7340] (rev c5)
+03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 HDMI Audio [1002:ab38]
+
+O endereço da minha GPU e 03:00.0.
+
+Com endereço em mãos eu digito o comando:
+
+lspci -nn -v -s 03:00.0
+
+Resultado:
+
+root@gamorim:~# lspci -nn -v -s 03:00.0
+03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:7340] (rev c5) (prog-if 00 [VGA controller])
+        Subsystem: Advanced Micro Devices, Inc. [AMD/ATI] Navi 14 [Radeon RX 5500/5500M / Pro 5500M] [1002:0b0c]
+        Flags: bus master, fast devsel, latency 0, IRQ 48, IOMMU group 10
+        Memory at 7fe0000000 (64-bit, prefetchable) [size=256M]
+        Memory at 7ff0000000 (64-bit, prefetchable) [size=2M]
+        I/O ports at f000 [size=256]
+        Memory at fcd00000 (32-bit, non-prefetchable) [size=512K]
+        Expansion ROM at fcd80000 [disabled] [size=128K]
+        Capabilities: [48] Vendor Specific Information: Len=08 <?>
+        Capabilities: [50] Power Management version 3
+        Capabilities: [64] Express Legacy Endpoint, MSI 00
+        Capabilities: [a0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+        Capabilities: [100] Vendor Specific Information: ID=0001 Rev=1 Len=010 <?>
+        Capabilities: [150] Advanced Error Reporting
+        Capabilities: [200] Physical Resizable BAR
+        Capabilities: [240] Power Budgeting <?>
+        Capabilities: [270] Secondary PCI Express
+        Capabilities: [2a0] Access Control Services
+        Capabilities: [2b0] Address Translation Service (ATS)
+        Capabilities: [2c0] Page Request Interface (PRI)
+        Capabilities: [2d0] Process Address Space ID (PASID)
+        Capabilities: [320] Latency Tolerance Reporting
+        Capabilities: [400] Data Link Feature <?>
+        Capabilities: [410] Physical Layer 16.0 GT/s <?>
+        Capabilities: [440] Lane Margining at the Receiver <?>
+        Kernel driver in use: vfio-pci
+        Kernel modules: amdgpu
+
+Caso apareça "Kernel driver in use: vfio-pci" significa que nossa GPU ja esá pronta para passagem, caso não funcione você pode tentar refazer o processo novamente.
+
