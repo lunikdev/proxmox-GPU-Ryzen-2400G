@@ -10,7 +10,7 @@ Para começarmos o seu hardware deve ter suporte a: VT-d, interrupt mapping, and
 
 **Hardware:**
 
->Placa-mãe: Asrock A320M-HD
+>Placa-mãe: Asrock A320M-HD (Bios Version 6.20)
 >
 >Cpu: Ryzen 2400G, AM4
 >
